@@ -4,12 +4,10 @@ import { Children } from "react";
 
 export default function AppLayout({header, children }) {
   return (
-    <div>
-      <Header>
+    <div className="flex flex-col flex-1">
          {header}
-      </Header>
 
-      <main>
+      <main className="flex-1">
         {children}
       </main>
 

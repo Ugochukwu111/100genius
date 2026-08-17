@@ -44,11 +44,28 @@
     #06200f
   );
 
-  --gradient-light: linear-gradient(
-    135deg,
-    #fcfdfc,
-    #e8ecea
-  );
+  --gradient-nav: linear-gradient(
+  90deg,
+  rgba(12, 40, 21, 0.95) 0%,
+  rgba(23, 88, 46, 0.88) 45%,
+  rgba(232, 236, 234, 0.45) 100%
+);
+--gradient-hero: linear-gradient(
+  90deg,
+  rgba(12, 40, 21, 0.95) 0%,
+  rgba(12, 40, 21, 0.72) 35%,
+  rgba(12, 40, 21, 0.30) 65%,
+  rgba(12, 40, 21, 0.05) 100%
+);
+/* Hero image overlay */
+--gradient-hero: linear-gradient(
+  90deg,
+  rgba(12, 40, 21, 0.95) 0%,
+  rgba(12, 40, 21, 0.72) 35%,
+  rgba(12, 40, 21, 0.30) 65%,
+  rgba(12, 40, 21, 0.05) 100%
+);
+
 
   /* CTA1 */
 
@@ -76,6 +93,7 @@
     #228b4a 0%,
     #143f23 100%
   );
+  
 }
 
 @theme {
@@ -97,6 +115,9 @@
 
 body{
   font-family: "Arimo", sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 button{
