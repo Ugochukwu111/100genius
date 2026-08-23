@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 
 import { Route, Routes } from "react-router-dom";
 import NavBar from "@/Components/NavBar";
+import WhatsAppIcon from "./Components/WhatsAppIcon";
 import PageLoader from "./Components/PageLoader";
 // Pages
 const HomePage = lazy(() => import("./Pages/HomePage"));
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <NavBar></NavBar>
+      <WhatsAppIcon/>
       <Suspense fallback = { <PageLoader/>}>
         <Routes >
           <Route index element={<HomePage />} />
