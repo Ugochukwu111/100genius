@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import FadeUp from "@/components/animations/FadeUp";
+import FadeUp from "@/Components/animations/FadeUp";
 
 const PARTNERS = [
   "Andela",
