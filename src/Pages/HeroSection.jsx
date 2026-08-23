@@ -1,5 +1,5 @@
 import { ArrowRight, Search } from "lucide-react";
-import heroImage from "@/assets/home/hero-img.webp";
+import heroImage from "/images/hero-img.webp";
 import { Link } from "react-router-dom";
 import programsData from "@/programmeData";
 import FadeUp from "@/Components/animations/FadeUp";
@@ -19,6 +19,8 @@ export default function HeroSection({ programme }) {
       ? programsData[(currentIndex + 1) % programsData.length]
       : null;
 
+  const backgroundImage = programme?.image || heroImage;
+
   return (
     <section
       className="
@@ -26,17 +28,39 @@ export default function HeroSection({ programme }) {
         flex
         min-h-dvh
         items-center
-        bg-cover
-        bg-center
-        bg-no-repeat
+        overflow-hidden
+        bg-primary-deep
       "
-      style={{
-        backgroundImage: `url(${
-          programme?.image || heroImage
-        })`,
-      }}
     >
-      {/* Gradient overlay */}
+      {/* Fallback background */}
+      <div
+        aria-hidden="true"
+        className="
+          absolute
+          inset-0
+          z-0
+          bg-primary-deep
+          grid-background
+        "
+      />
+
+      {/* Background image */}
+      <div
+        aria-hidden="true"
+        className="
+          absolute
+          inset-0
+          z-0
+          bg-cover
+          bg-center
+          bg-no-repeat
+        "
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      />
+
+      {/* Hero gradient */}
       <div
         aria-hidden="true"
         className="
@@ -53,8 +77,6 @@ export default function HeroSection({ programme }) {
         <div className="flex max-w-[650px] flex-col gap-3 max-md:gap-14">
           {isProgrammeHero ? (
             <>
-              {/* Programme Hero */}
-
               <FadeUp delay={0.1}>
                 <span className="text-sm font-semibold uppercase tracking-wider text-green-400">
                   {programme.hero?.eyebrow}
@@ -100,7 +122,6 @@ export default function HeroSection({ programme }) {
                         transition-all
                         duration-200
                         ease-out
-                        hover:border-text-background
                         hover:bg-background
                         hover:text-primary
                       "
@@ -114,15 +135,13 @@ export default function HeroSection({ programme }) {
             </>
           ) : (
             <>
-              {/* Home Hero */}
-
               <FadeUp delay={0.15}>
                 <h1 className="fw-extrabold text-background text-shadow-lg">
                   Turn Your Tech Ambition
                   <span className="text-green-400">
-                    &nbsp; Into a Paying Career 
+                    &nbsp; Into a Paying Career
                   </span>
-                   &nbsp;in 6 Months
+                  &nbsp;in 6 Months
                 </h1>
               </FadeUp>
 
@@ -160,7 +179,6 @@ export default function HeroSection({ programme }) {
                       transition-all
                       duration-200
                       ease-out
-                      hover:border-text-background
                       hover:bg-background
                       hover:text-primary
                     "
