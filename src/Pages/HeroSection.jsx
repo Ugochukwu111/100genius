@@ -30,6 +30,7 @@ export default function HeroSection({ programme }) {
         items-center
         overflow-hidden
         bg-primary-deep
+        section-safe-top
       "
     >
       {/* Fallback background */}

@@ -202,6 +202,9 @@ UTILITIES
 .section-spacing{
   padding: 5em 0;
 }
+.section-safe-top {
+   padding-top: clamp(5.5rem, 10vw, 8rem);
+}
 
 .grid-background {
   background-image:

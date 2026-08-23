@@ -266,10 +266,10 @@ export default function ApplicationSection() {
         min-h-[100svh]
         overflow-hidden
         bg-background
-        py-[clamp(3rem,6vw,6rem)]
+        section-safe-top
       "
     >
-      <div className="container">
+      <div className="container ">
 
         {/* =====================================================
             HEADER
