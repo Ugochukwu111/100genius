@@ -66,7 +66,8 @@ export default function NavBar() {
   }, [location.pathname]);
 
   return (
-    <nav className="bg-[image:var(--gradient-nav)] z-50 fixed w-full">
+    <nav className="bg-[image:var(--gradient-nav)] z-50 fixed w-full backdrop-blur-md
+    supports-[backdrop-filter]:bg-black/10 border-white/10">
       <div className="container  relative z-100 flex items-center justify-between gap-10">
         {/* Logo */}
         <NavLink to="/" className="h-14 w-14">
