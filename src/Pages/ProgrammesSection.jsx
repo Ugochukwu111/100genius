@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import programsData from "@/programmeData";
-import TextReveal from "@/Components/animations/TextReveal";
 import FadeUp from "@/Components/animations/FadeUp";
 import PopIn from "@/Components/animations/PopIn";
+
 
 function TrackVisual({ type }) {
   if (type === "web") {
@@ -176,6 +176,7 @@ export default function TracksSection() {
     <section
       aria-labelledby="tracks-title"
       className="bg-primary-deep py-20 text-background sm:py-24 lg:py-28"
+      id="programmes"
     >
       <div className="container">
         {/* Section introduction */}

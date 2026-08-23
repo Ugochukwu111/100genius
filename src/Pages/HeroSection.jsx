@@ -9,9 +9,7 @@ export default function HeroSection({ programme }) {
   const isProgrammeHero = Boolean(programme);
 
   const currentIndex = programme
-    ? programsData.findIndex(
-        (item) => item.slug === programme.slug
-      )
+    ? programsData.findIndex((item) => item.slug === programme.slug)
     : -1;
 
   const nextProgramme =
@@ -157,15 +155,15 @@ export default function HeroSection({ programme }) {
               <PopIn delay={0.45}>
                 <div className="flex flex-wrap gap-4 max-md:flex-col">
                   <Link
-                    to=""
+                    to="/apply"
                     className="cta-1 flex flex-1 items-center justify-center"
                   >
                     Apply For The Next Cohort
                     <ArrowRight strokeWidth={1.5} size={18} />
                   </Link>
 
-                  <Link
-                    to="/programmes"
+                  <a
+                    href="#programmes"
                     className="
                       flex
                       flex-1
@@ -186,7 +184,7 @@ export default function HeroSection({ programme }) {
                   >
                     Explore Programmes
                     <Search size={18} />
-                  </Link>
+                  </a>
                 </div>
               </PopIn>
             </>

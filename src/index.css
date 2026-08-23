@@ -38,62 +38,40 @@
     var(--color-primary)
   );
 
-  --gradient-dark: linear-gradient(
-    135deg,
-    #0c2815,
-    #06200f
-  );
+  --gradient-dark: linear-gradient(135deg, #0c2815, #06200f);
 
   --gradient-nav: linear-gradient(
-  90deg,
-  rgba(12, 40, 21, 0.95) 0%,
-  rgba(23, 88, 46, 0.88) 45%,
-  rgba(232, 236, 234, 0.45) 100%
-);
---gradient-hero: linear-gradient(
-  90deg,
-  rgba(12, 40, 21, 0.95) 0%,
-  rgba(12, 40, 21, 0.72) 35%,
-  rgba(12, 40, 21, 0.30) 65%,
-  rgba(12, 40, 21, 0.05) 100%
-);
-/* Hero image overlay */
---gradient-hero: linear-gradient(
-  90deg,
-  rgba(12, 40, 21, 0.95) 0%,
-  rgba(12, 40, 21, 0.72) 35%,
-  rgba(12, 40, 21, 0.30) 65%,
-  rgba(12, 40, 21, 0.05) 100%
-);
-
+    90deg,
+    rgba(12, 40, 21, 0.95) 0%,
+    rgba(23, 88, 46, 0.88) 45%,
+    rgba(232, 236, 234, 0.45) 100%
+  );
+  --gradient-hero: linear-gradient(
+    90deg,
+    rgba(12, 40, 21, 0.95) 0%,
+    rgba(12, 40, 21, 0.72) 35%,
+    rgba(12, 40, 21, 0.3) 65%,
+    rgba(12, 40, 21, 0.05) 100%
+  );
+  /* Hero image overlay */
+  --gradient-hero: linear-gradient(
+    90deg,
+    rgba(12, 40, 21, 0.95) 0%,
+    rgba(12, 40, 21, 0.72) 35%,
+    rgba(12, 40, 21, 0.3) 65%,
+    rgba(12, 40, 21, 0.05) 100%
+  );
 
   /* CTA1 */
 
-    --gradient-cta1: linear-gradient(
-    135deg,
-    #ff8084 0%,
-    #d9363e 100%
-  );
+  --gradient-cta1: linear-gradient(135deg, #ff8084 0%, #d9363e 100%);
 
-  --gradient-cta1-hover: linear-gradient(
-    135deg,
-    #ff6b70 0%,
-    #c92f37 100%
-  );
+  --gradient-cta1-hover: linear-gradient(135deg, #ff6b70 0%, #c92f37 100%);
 
-    /* CTA 2*/
-  --gradient-cta2: linear-gradient(
-    135deg,
-    #1b713b 0%,
-    #0c2815 100%
-  );
+  /* CTA 2*/
+  --gradient-cta2: linear-gradient(135deg, #1b713b 0%, #0c2815 100%);
 
-  --gradient-cta2-hover: linear-gradient(
-    135deg,
-    #228b4a 0%,
-    #143f23 100%
-  );
-  
+  --gradient-cta2-hover: linear-gradient(135deg, #228b4a 0%, #143f23 100%);
 }
 
 @theme {
@@ -112,18 +90,25 @@
   --color-info: var(--color-info);
   --color-danger: var(--color-danger);
 }
+html {
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  background-color: var(--color-primary-deep);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+  scroll-behavior: smooth;
+}
 
-body{
+body {
   font-family: "Arimo", sans-serif;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
-button{
+button {
   cursor: pointer;
 }
-
 
 /* 
 ======================================================
@@ -170,40 +155,38 @@ p {
   line-height: 1.6;
 }
 
-
-
 /*
 ========================================
 UTILITIES
 ======================================== 
 */
-.cta-1{
+.cta-1 {
   background: var(--gradient-cta1);
-  padding: .5em 1.2em;
+  padding: 0.5em 1.2em;
   color: var(--color-background);
   font-weight: 600;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   display: flex;
   align-items: center;
-  gap: .5em;
+  gap: 0.5em;
 }
 
-.cta-1:hover{
-    background: var(--gradient-cta1-hover);
+.cta-1:hover {
+  background: var(--gradient-cta1-hover);
 }
 
-.container{
+.container {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: .5em;
+  padding: 0.5em;
 }
 
-.section-spacing{
+.section-spacing {
   padding: 5em 0;
 }
 .section-safe-top {
-   padding-top: clamp(5.5rem, 10vw, 8rem);
+  padding-top: clamp(5.5rem, 10vw, 8rem);
 }
 
 .grid-background {
@@ -213,8 +196,6 @@ UTILITIES
 
   background-size: 40px 40px;
 }
-
-
 
 @keyframes marquee {
   0% {

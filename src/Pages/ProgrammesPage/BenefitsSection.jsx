@@ -12,9 +12,7 @@ export default function BenefitsSection({ programme }) {
 
     content: (
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-transparent">
-        {/* =====================================================
-            INNER ABSTRACT CURVES
-        ====================================================== */}
+        {/* Inner abstract curves */}
 
         <div
           aria-hidden="true"
@@ -28,7 +26,7 @@ export default function BenefitsSection({ programme }) {
             rounded-[50%]
             border-2
             border-white/[0.10]
-            animate-[benefitCurveOne_8s_ease-in-out_infinite]
+            animate-benefit-curve-one
           "
         />
 
@@ -44,7 +42,7 @@ export default function BenefitsSection({ programme }) {
             rounded-[50%]
             border
             border-primary/[0.45]
-            animate-[benefitCurveTwo_10s_ease-in-out_infinite]
+            animate-benefit-curve-two
           "
         />
 
@@ -60,13 +58,11 @@ export default function BenefitsSection({ programme }) {
             rounded-[50%]
             border
             border-white/[0.07]
-            animate-[benefitCurveThree_12s_ease-in-out_infinite]
+            animate-benefit-curve-three
           "
         />
 
-        {/* =====================================================
-            GLOW
-        ====================================================== */}
+        {/* Glow */}
 
         <div
           aria-hidden="true"
@@ -82,13 +78,11 @@ export default function BenefitsSection({ programme }) {
             bg-primary
             opacity-[0.15]
             blur-[100px]
-            animate-[benefitGlow_5s_ease-in-out_infinite]
+            animate-benefit-glow
           "
         />
 
-        {/* =====================================================
-            NUMBER
-        ====================================================== */}
+        {/* Number */}
 
         <span
           className="
@@ -100,7 +94,7 @@ export default function BenefitsSection({ programme }) {
             leading-none
             tracking-[-0.08em]
             text-white/[0.09]
-            animate-[benefitNumber_6s_ease-in-out_infinite]
+            animate-benefit-number
           "
         >
           {String(index + 1).padStart(2, "0")}
@@ -119,11 +113,7 @@ export default function BenefitsSection({ programme }) {
         py-[clamp(5rem,10vw,9rem)]
       "
     >
-      {/* =====================================================
-          PREMIUM BACKGROUND SYSTEM
-      ====================================================== */}
-
-      {/* Large ambient glow */}
+      {/* Ambient glow */}
 
       <div
         aria-hidden="true"
@@ -140,13 +130,10 @@ export default function BenefitsSection({ programme }) {
           bg-primary
           opacity-[0.10]
           blur-[160px]
-          animate-[ambientGlow_12s_ease-in-out_infinite]
         "
       />
 
-      {/* =====================================================
-          LARGE PRIMARY CURVE
-      ====================================================== */}
+      {/* Large primary curve */}
 
       <div
         aria-hidden="true"
@@ -165,9 +152,7 @@ export default function BenefitsSection({ programme }) {
         "
       />
 
-      {/* =====================================================
-          SECOND LARGE CURVE
-      ====================================================== */}
+      {/* Second large curve */}
 
       <div
         aria-hidden="true"
@@ -186,9 +171,7 @@ export default function BenefitsSection({ programme }) {
         "
       />
 
-      {/* =====================================================
-          THIRD CURVE
-      ====================================================== */}
+      {/* Third curve */}
 
       <div
         aria-hidden="true"
@@ -207,9 +190,7 @@ export default function BenefitsSection({ programme }) {
         "
       />
 
-      {/* =====================================================
-          CROSSING CURVE
-      ====================================================== */}
+      {/* Crossing curve */}
 
       <div
         aria-hidden="true"
@@ -228,9 +209,7 @@ export default function BenefitsSection({ programme }) {
         "
       />
 
-      {/* =====================================================
-          STRONG DIAGONAL STROKES
-      ====================================================== */}
+      {/* Diagonal strokes */}
 
       <div
         aria-hidden="true"
@@ -268,9 +247,7 @@ export default function BenefitsSection({ programme }) {
         "
       />
 
-      {/* =====================================================
-          SMALL TECHNICAL ACCENT
-      ====================================================== */}
+      {/* Technical accents */}
 
       <div
         aria-hidden="true"
@@ -304,9 +281,7 @@ export default function BenefitsSection({ programme }) {
         "
       />
 
-      {/* =====================================================
-          CONTENT
-      ====================================================== */}
+      {/* Content */}
 
       <div className="container">
         <header className="mb-[clamp(3rem,7vw,6rem)] max-w-2xl">
@@ -341,100 +316,6 @@ export default function BenefitsSection({ programme }) {
 
         <StickyScroll content={content} />
       </div>
-
-      {/* =====================================================
-          ANIMATION KEYFRAMES
-      ====================================================== */}
-
-      <style>{`
-        @keyframes benefitCurveOne {
-          0%,
-          100% {
-            transform: rotate(30deg) translate3d(0, 0, 0);
-            opacity: 0.45;
-          }
-
-          50% {
-            transform: rotate(32deg) translate3d(-10px, 8px, 0);
-            opacity: 0.8;
-          }
-        }
-
-        @keyframes benefitCurveTwo {
-          0%,
-          100% {
-            transform: rotate(-25deg) translate3d(0, 0, 0);
-            opacity: 0.45;
-          }
-
-          50% {
-            transform: rotate(-28deg) translate3d(12px, -8px, 0);
-            opacity: 0.8;
-          }
-        }
-
-        @keyframes benefitCurveThree {
-          0%,
-          100% {
-            transform: rotate(40deg) translate3d(0, 0, 0);
-            opacity: 0.35;
-          }
-
-          50% {
-            transform: rotate(43deg) translate3d(-8px, 10px, 0);
-            opacity: 0.65;
-          }
-        }
-
-        @keyframes benefitGlow {
-          0%,
-          100% {
-            transform: translate(-50%, -50%) scale(0.9);
-            opacity: 0.12;
-          }
-
-          50% {
-            transform: translate(-50%, -50%) scale(1.15);
-            opacity: 0.22;
-          }
-        }
-
-        @keyframes benefitNumber {
-          0%,
-          100% {
-            transform: scale(1);
-            opacity: 0.75;
-          }
-
-          50% {
-            transform: scale(1.035);
-            opacity: 1;
-          }
-        }
-
-        @keyframes ambientGlow {
-          0%,
-          100% {
-            transform: translateX(-50%) scale(0.9);
-            opacity: 0.08;
-          }
-
-          50% {
-            transform: translateX(-50%) scale(1.1);
-            opacity: 0.14;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          *,
-          *::before,
-          *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            scroll-behavior: auto !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
