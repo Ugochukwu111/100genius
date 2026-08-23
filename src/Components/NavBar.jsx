@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Programs", href: "/programs" },
-  { label: "About Us", href: "/about-us" },
+  { label: "Programmes", href: "/programme/full-stack-development" },
   { label: "How It Works", href: "/how-it-works" },
 ];
 
@@ -24,9 +23,13 @@ export default function NavBar() {
 
   useEffect(() => {
     const updateUnderline = () => {
-      const activeIndex = navLinks.findIndex(
-        (link) => link.href === location.pathname,
-      );
+      const activeIndex = navLinks.findIndex((link) => {
+        if (link.href === "/programme") {
+          return location.pathname.startsWith("/programme");
+        }
+
+        return link.href === location.pathname;
+      });
 
       if (activeIndex === -1) return;
 
@@ -64,7 +67,7 @@ export default function NavBar() {
 
   return (
     <nav className="bg-[image:var(--gradient-nav)] z-50 fixed w-full">
-      <div className="container relative z-100 flex items-center justify-between gap-10">
+      <div className="container  relative z-100 flex items-center justify-between gap-10">
         {/* Logo */}
         <NavLink to="/" className="h-14 w-14">
           <img src={logo} alt="100 Genius" />
@@ -137,25 +140,27 @@ export default function NavBar() {
                   }}
                   to={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive }) =>
-                    `
-                      block
-                      px-3
-                      py-2
-                      font-semibold
-                      transition-colors
-                      duration-200
+                  className={({ isActive }) => {
+                    const isProgrammePage =
+                      link.href === "/programme" &&
+                      location.pathname.startsWith("/programme");
 
-                      ${
-                        isActive
-                          ? "text-background"
-                          : "text-surface-muted hover:text-background"
-                      }
+                    const active = isActive || isProgrammePage;
 
-                      max-md:py-5
-                      max-md:hover:bg-[#010a04]
-                    `
-                  }
+                    return `
+    block
+    px-3
+    py-2
+    font-semibold
+    transition-colors
+    duration-200
+
+    ${active ? "text-background" : "text-surface-muted hover:text-background"}
+
+    max-md:py-5
+    max-md:hover:bg-[#010a04]
+  `;
+                  }}
                 >
                   {link.label}
                 </NavLink>
@@ -208,7 +213,7 @@ export default function NavBar() {
             }}
           >
             <span>Apply Now</span>
-            <ArrowRight strokeWidth={1.5} size={18} />
+            <span aria-hidden="true">→</span>
           </Link>
 
           {/* Bottom mobile handle */}

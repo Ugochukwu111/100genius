@@ -199,10 +199,133 @@ UTILITIES
   padding: .5em;
 }
 
+.section-spacing{
+  padding: 5em 0;
+}
+
 .grid-background {
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
 
   background-size: 40px 40px;
+}
+
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+@keyframes benefit-curve-one {
+  0%,
+  100% {
+    transform: rotate(30deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(33deg) translate3d(-18px, 12px, 0);
+  }
+}
+
+@keyframes benefit-curve-two {
+  0%,
+  100% {
+    transform: rotate(-25deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-29deg) translate3d(18px, -14px, 0);
+  }
+}
+
+@keyframes benefit-curve-three {
+  0%,
+  100% {
+    transform: rotate(40deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(44deg) translate3d(-14px, 16px, 0);
+  }
+}
+
+@keyframes benefit-glow {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.12;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.22;
+  }
+}
+
+@keyframes benefit-number {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+.animate-benefit-curve-one {
+  animation: benefit-curve-one 9s ease-in-out infinite;
+}
+
+.animate-benefit-curve-two {
+  animation: benefit-curve-two 11s ease-in-out infinite;
+}
+
+.animate-benefit-curve-three {
+  animation: benefit-curve-three 13s ease-in-out infinite;
+}
+
+.animate-benefit-glow {
+  animation: benefit-glow 6s ease-in-out infinite;
+}
+
+.animate-benefit-number {
+  animation: benefit-number 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-benefit-curve-one,
+  .animate-benefit-curve-two,
+  .animate-benefit-curve-three,
+  .animate-benefit-glow,
+  .animate-benefit-number {
+    animation: none;
+  }
 }

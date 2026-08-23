@@ -1,8 +1,24 @@
 import { ArrowRight, Search } from "lucide-react";
 import heroImage from "@/assets/home/hero-img.webp";
 import { Link } from "react-router-dom";
+import programsData from "@/programmeData";
+import FadeUp from "@/Components/animations/FadeUp";
+import PopIn from "@/Components/animations/PopIn";
 
-export default function HeroSection() {
+export default function HeroSection({ programme }) {
+  const isProgrammeHero = Boolean(programme);
+
+  const currentIndex = programme
+    ? programsData.findIndex(
+        (item) => item.slug === programme.slug
+      )
+    : -1;
+
+  const nextProgramme =
+    currentIndex !== -1
+      ? programsData[(currentIndex + 1) % programsData.length]
+      : null;
+
   return (
     <section
       className="
@@ -12,14 +28,18 @@ export default function HeroSection() {
         items-center
         bg-cover
         bg-center
-        bg-no-repeat"
-      style={{ backgroundImage: `url(${heroImage})` }}
+        bg-no-repeat
+      "
+      style={{
+        backgroundImage: `url(${
+          programme?.image || heroImage
+        })`,
+      }}
     >
       {/* Gradient overlay */}
       <div
         aria-hidden="true"
         className="
-         
           pointer-events-none
           absolute
           inset-0
@@ -29,32 +49,129 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="container relative z-10 flex-1 ">
-        <div className="max-w-[650px] flex flex-col gap-3  max-md:gap-14 ">
-          <h1 className="fw-extrabold text-background text-shadow-lg">
-            Turn Your Tech Ambition 
-            <span className="text-green-400"> Into a Paying Career </span>
-            in 6 Months
-          </h1>
+      <div className="container relative z-10 flex-1">
+        <div className="flex max-w-[650px] flex-col gap-3 max-md:gap-14">
+          {isProgrammeHero ? (
+            <>
+              {/* Programme Hero */}
 
-          <p className="text-surface">
-            Join 500+ graduates who built real skills, real portfolios, and
-            landed real jobs through hands-on mentorship in Full-Stack Web Dev,
-            Data Analytics, UI/UX Design, and Cybersecurity.
-          </p>
+              <FadeUp delay={0.1}>
+                <span className="text-sm font-semibold uppercase tracking-wider text-green-400">
+                  {programme.hero?.eyebrow}
+                </span>
+              </FadeUp>
 
-          <div className="flex gap-4 flex-wrap  max-md:flex-col">
-            <Link to="" className="cta-1 flex-1 justify-center items-center ">
-              Apply For The Next Cohort
-              <ArrowRight strokeWidth={1.5} size={18} />
-            </Link>
-            <Link
-              to=""
-              className="flex-1 text-background  border-2 border-text-background text-center flex justify-center items-center gap-2 hover:text-primary transition-all duration-200 ease-out hover:bg-background hover:border-text-background py-1.5"
-            >
-              Explore Programmes <Search size={18} />
-            </Link>
-          </div>
+              <FadeUp delay={0.2}>
+                <h1 className="fw-extrabold text-background text-shadow-lg">
+                  {programme.hero?.title || programme.title}
+                </h1>
+              </FadeUp>
+
+              <FadeUp delay={0.3}>
+                <p className="text-surface">
+                  {programme.hero?.description || programme.description}
+                </p>
+              </FadeUp>
+
+              <PopIn delay={0.4}>
+                <div className="flex flex-wrap gap-4 max-md:flex-col">
+                  <Link
+                    to=""
+                    className="cta-1 flex flex-1 items-center justify-center"
+                  >
+                    {programme.hero?.cta || "Start Learning"}
+                    <ArrowRight strokeWidth={1.5} size={18} />
+                  </Link>
+
+                  {nextProgramme && (
+                    <Link
+                      to={`/programme/${nextProgramme.slug}`}
+                      className="
+                        flex
+                        flex-1
+                        items-center
+                        justify-center
+                        gap-2
+                        border-2
+                        border-text-background
+                        py-1.5
+                        text-center
+                        text-background
+                        transition-all
+                        duration-200
+                        ease-out
+                        hover:border-text-background
+                        hover:bg-background
+                        hover:text-primary
+                      "
+                    >
+                      Next: {nextProgramme.shortTitle}
+                      <ArrowRight size={18} />
+                    </Link>
+                  )}
+                </div>
+              </PopIn>
+            </>
+          ) : (
+            <>
+              {/* Home Hero */}
+
+              <FadeUp delay={0.15}>
+                <h1 className="fw-extrabold text-background text-shadow-lg">
+                  Turn Your Tech Ambition
+                  <span className="text-green-400">
+                    &nbsp; Into a Paying Career 
+                  </span>
+                   &nbsp;in 6 Months
+                </h1>
+              </FadeUp>
+
+              <FadeUp delay={0.3}>
+                <p className="text-surface">
+                  Join 500+ graduates who built real skills, real portfolios,
+                  and landed real jobs through hands-on mentorship in Full-Stack
+                  Web Dev, Data Analytics, UI/UX Design, and Cybersecurity.
+                </p>
+              </FadeUp>
+
+              <PopIn delay={0.45}>
+                <div className="flex flex-wrap gap-4 max-md:flex-col">
+                  <Link
+                    to=""
+                    className="cta-1 flex flex-1 items-center justify-center"
+                  >
+                    Apply For The Next Cohort
+                    <ArrowRight strokeWidth={1.5} size={18} />
+                  </Link>
+
+                  <Link
+                    to="/programmes"
+                    className="
+                      flex
+                      flex-1
+                      items-center
+                      justify-center
+                      gap-2
+                      border-2
+                      border-text-background
+                      py-1.5
+                      text-center
+                      text-background
+                      transition-all
+                      duration-200
+                      ease-out
+                      hover:border-text-background
+                      hover:bg-background
+                      hover:text-primary
+                    "
+                  >
+                    Explore Programmes
+                    <Search size={18} />
+                  </Link>
+                </div>
+              </PopIn>
+            </>
+          )}
         </div>
       </div>
     </section>
