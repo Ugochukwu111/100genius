@@ -1,85 +1,312 @@
 const mentors = [
   {
-    category: "WEB DEV",
-    initials: "PA",
     name: "Pascal",
-    role: "SOFTWARE ENGINEER",
+    role: "Software Engineer",
     description:
-      "5+ years building production web apps. Mentored 80+ students into junior and mid-level engineering roles.",
+      "Builds production web apps and mentors developers toward real engineering roles.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
   },
   {
-    category: "AI/ML",
-    initials: "OJ",
     name: "Ohema Jessica",
-    role: "AI/ML SPECIALIST",
+    role: "AI/ML Specialist",
     description:
-      "Machine learning engineer with experience at top African tech companies. Breaks down complex models into teachable moments.",
+      "Makes complex machine learning concepts practical, clear, and applicable.",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
   },
   {
-    category: "DESIGN",
-    initials: "JA",
     name: "James",
-    role: "GRAPHIC & PRODUCT DESIGNER",
+    role: "Product Designer",
     description:
-      "Product designer with a decade of client work. Teaches the design thinking process used at leading product studios.",
+      "Teaches practical design thinking shaped by years of real client work.",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
   },
 ];
 
-// Duplicate list to ensure a seamless infinite loop
 const marqueeMentors = [...mentors, ...mentors];
 
 export default function MentorsSection() {
   return (
-    <section className="section-spacing overflow-hidden bg-background py-16 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          {/* Left Column: Heading & Value Proposition */}
+    <section className="section-spacing relative isolate overflow-hidden bg-background py-16 md:py-24">
+      {/* =====================================================
+          PREMIUM ABSTRACT BACKGROUND
+      ====================================================== */}
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      >
+        {/* Large flowing primary curve */}
+        <svg
+          viewBox="0 0 1600 700"
+          fill="none"
+          className="
+            absolute
+            -left-[12%]
+            top-[5%]
+            h-[70%]
+            w-[125%]
+            min-w-[1000px]
+            opacity-[0.14]
+            animate-benefit-curve-one
+          "
+        >
+          <path
+            d="
+              M-100 520
+              C180 180 420 120 650 280
+              C880 440 1080 520 1320 270
+              C1450 135 1570 90 1720 110
+            "
+            stroke="var(--color-primary)"
+            strokeWidth="1.5"
+          />
+
+          <path
+            d="
+              M-120 555
+              C180 215 420 155 650 315
+              C880 475 1080 555 1320 305
+              C1450 170 1570 125 1720 145
+            "
+            stroke="var(--color-primary)"
+            strokeWidth="0.75"
+            opacity="0.45"
+          />
+        </svg>
+
+        {/* Secondary opposing curve */}
+        <svg
+          viewBox="0 0 1400 800"
+          fill="none"
+          className="
+            absolute
+            -right-[18%]
+            bottom-[-10%]
+            h-[85%]
+            w-[110%]
+            min-w-[900px]
+            opacity-[0.11]
+            animate-benefit-curve-two
+          "
+        >
+          <path
+            d="
+              M1500 80
+              C1250 210 1160 390 930 450
+              C700 510 580 350 390 430
+              C230 495 130 650 -80 720
+            "
+            stroke="var(--color-primary-dark)"
+            strokeWidth="1.5"
+          />
+
+          <path
+            d="
+              M1500 115
+              C1250 245 1160 425 930 485
+              C700 545 580 385 390 465
+              C230 530 130 685 -80 755
+            "
+            stroke="var(--color-primary-dark)"
+            strokeWidth="0.75"
+            opacity="0.4"
+          />
+        </svg>
+
+        {/* Small architectural curve */}
+        <svg
+          viewBox="0 0 900 500"
+          fill="none"
+          className="
+            absolute
+            -bottom-[15%]
+            left-[22%]
+            h-[55%]
+            w-[65%]
+            opacity-[0.08]
+            animate-benefit-curve-three
+          "
+        >
+          <path
+            d="
+              M-50 420
+              C170 120 330 100 470 270
+              C610 440 730 420 950 80
+            "
+            stroke="var(--color-primary)"
+            strokeWidth="1"
+          />
+        </svg>
+
+        {/* Extremely subtle center glow */}
+        <div
+          className="
+            absolute
+            left-[55%]
+            top-[45%]
+            h-[420px]
+            w-[420px]
+            -translate-x-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-primary/[0.035]
+            blur-[100px]
+          "
+        />
+
+        {/* Fine horizontal light */}
+        <div
+          className="
+            absolute
+            left-0
+            right-0
+            top-[28%]
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-primary/[0.06]
+            to-transparent
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ====================================================== */}
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-1">
+          {/* Intro */}
           <div className="max-w-[480px]">
             <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              You're not learning from a course. You're learning from the people
-              doing the work.
+              You're not learning from a course. You're{" "}
+              <span className="text-primary">learning</span> from the{" "}
+              <span className="text-primary">people</span> doing the{" "}
+              <span className="text-primary">work.</span>
             </h2>
 
-            <p className="mt-6 text-base text-muted-foreground sm:text-lg">
+            <p className="mt-6 max-w-[440px] text-base leading-relaxed text-muted-foreground sm:text-lg">
               Every mentor is a working professional first, and a teacher
-              second. Get direct access to industry insights and real-world feedback.
+              second. Get direct access to industry insights and real-world
+              feedback.
             </p>
           </div>
 
-          {/* Right Column: Infinite Marquee Carousel with Edge Fades */}
-          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="animate-marquee flex gap-6 py-4">
+          {/* Mentor marquee */}
+          <div
+            className="
+              relative
+              w-full
+              overflow-hidden
+              [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]
+            "
+          >
+            <div className="animate-marquee flex gap-2 py-4 sm:gap-3">
               {marqueeMentors.map((mentor, index) => (
                 <article
-                  key={`${mentor.initials}-${index}`}
-                  className="group relative flex w-[320px] shrink-0 flex-col justify-between rounded-2xl border border-primary/20 bg-gradient-to-br from-primary-dark/80 to-primary-deep/90 p-6 text-background shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-2xl sm:w-[360px]"
+                  key={`${mentor.name}-${index}`}
+                  className="
+                    group
+                    relative
+                    h-[430px]
+                    w-[290px]
+                    shrink-0
+                    overflow-hidden
+                    rounded
+                    bg-primary-deep
+                    shadow-xl
+                    transition-transform
+                    duration-500
+                    hover:-translate-y-1.5
+                    sm:h-[480px]
+                    sm:w-[330px]
+                  "
                 >
-                  <div>
-                    {/* Badge */}
-                    <div className="mb-6 flex items-center justify-between">
-                      <span className="inline-block rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-green-300">
-                        {mentor.category}
-                      </span>
-                    </div>
+                  <img
+                    src={mentor.image}
+                    alt={`${mentor.name} — ${mentor.role}`}
+                    loading="lazy"
+                    className="
+                      absolute
+                      inset-0
+                      h-full
+                      w-full
+                      object-cover
+                      transition-transform
+                      duration-700
+                      ease-out
+                      group-hover:scale-[1.04]
+                    "
+                  />
 
-                    {/* Avatar & Names */}
-                    <div className="flex  items-center gap-4 flex-col text-center">
-                      <div className="w-20 h-20 rounded-full border flex items-center justify-center">
-                        {mentor.initials}
-                      </div>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-black/10"
+                  />
 
-                      <div className="min-w-0">
-                        <h4 className="truncate text-lg font-bold leading-snug text-background">
-                          {mentor.name}
-                        </h4>
-                        <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-green-300">
-                          {mentor.role}
-                        </p>
-                      </div>
-                    </div>
+                  <div
+                    aria-hidden="true"
+                    className="
+                      absolute
+                      inset-x-0
+                      bottom-0
+                      h-[65%]
+                      bg-gradient-to-t
+                      from-primary-deep
+                      via-primary-deep/80
+                      to-transparent
+                    "
+                  />
 
-                    {/* Description */}
-                    <p className="mt-6 text-sm leading-relaxed text-surface/90">
+                  <div
+                    className="
+                      absolute
+                      inset-x-0
+                      bottom-0
+                      z-10
+                      p-5
+                      sm:p-6
+                    "
+                  >
+                    <p
+                      className="
+                        mb-2
+                        text-xs
+                        font-semibold
+                        uppercase
+                        tracking-[0.14em]
+                        text-green-300
+                      "
+                    >
+                      {mentor.role}
+                    </p>
+
+                    <h3
+                      className="
+                        text-2xl
+                        font-extrabold
+                        leading-tight
+                        tracking-tight
+                        text-background
+                        sm:text-3xl
+                      "
+                    >
+                      {mentor.name}
+                    </h3>
+
+                    <div className="my-4 h-px w-10 bg-white/30" />
+
+                    <p
+                      className="
+                        max-w-[280px]
+                        text-sm
+                        leading-relaxed
+                        text-white/75
+                      "
+                    >
                       {mentor.description}
                     </p>
                   </div>
