@@ -12,7 +12,7 @@ const programsData = [
 
     duration: "12 Weeks",
     level: "Beginner to Intermediate",
-    price: "₦150,000",
+    price: "₦300,000",
 
     hero: {
       eyebrow: "Frontend Development Track",
@@ -119,7 +119,7 @@ const programsData = [
 
     duration: "12 Weeks",
     level: "Beginner to Intermediate",
-    price: "₦150,000",
+    price: "₦350,000",
 
     hero: {
       eyebrow: "Data Analysis Track",
@@ -231,7 +231,7 @@ const programsData = [
 
     duration: "12 Weeks",
     level: "Beginner to Intermediate",
-    price: "₦150,000",
+    price: "₦350,000",
 
     hero: {
       eyebrow: "Cybersecurity Track",
@@ -343,7 +343,7 @@ const programsData = [
 
     duration: "16 Weeks",
     level: "Intermediate",
-    price: "₦200,000",
+    price: "₦450,000",
 
     hero: {
       eyebrow: "Full-Stack Development Track",
