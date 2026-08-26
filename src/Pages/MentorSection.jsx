@@ -1,27 +1,28 @@
+import frontendDeveloperImage from "@/assets/mentors/frontend-developer.jpeg";
+import dataAnalystImage from "@/assets/mentors/data-analyst.webp";
+import graphicDesignerImage from "@/assets/mentors/graphic-designer.webp";
+
 const mentors = [
   {
     name: "Pascal",
     role: "Software Engineer",
     description:
       "Builds production web apps and mentors developers toward real engineering roles.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
+    image: frontendDeveloperImage,
   },
   {
     name: "Ohema Jessica",
     role: "AI/ML Specialist",
     description:
       "Makes complex machine learning concepts practical, clear, and applicable.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
+    image: dataAnalystImage,
   },
   {
     name: "James",
     role: "Product Designer",
     description:
       "Teaches practical design thinking shaped by years of real client work.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
+    image: graphicDesignerImage,
   },
 ];
 
