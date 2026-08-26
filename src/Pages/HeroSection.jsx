@@ -97,7 +97,7 @@ export default function HeroSection({ programme }) {
               <PopIn delay={0.4}>
                 <div className="flex flex-wrap gap-4 max-md:flex-col">
                   <Link
-                    to=""
+                    to={`/apply?programme=${programme.slug}`}
                     className="cta-1 flex flex-1 items-center justify-center"
                   >
                     {programme.hero?.cta || "Start Learning"}

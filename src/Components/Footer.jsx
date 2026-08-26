@@ -11,55 +11,55 @@ const socialLinks = [
   {
     id: "whatsapp",
     name: "WhatsApp",
-    url: "https://wa.me",
+    url: "https://wa.me/2349065643879",
     icon: FaWhatsapp,
   },
   {
     id: "instagram",
     name: "Instagram",
-    url: "https://instagram.com",
+    url: "https://www.instagram.com/100genius",
     icon: FaInstagram,
   },
   {
     id: "tiktok",
     name: "TikTok",
-    url: "https://tiktok.com",
+    url: "https://www.tiktok.com/@official_100genius",
     icon: FaTiktok,
   },
   {
     id: "mail",
     name: "Email",
-    url: "mailto:your@email.com",
+    url: "mailto:100sgenius@gmail.com",
     icon: FaEnvelope,
   },
 ];
 
 const footerLinks = [
   {
-    title: "Programs",
+    title: "Programmes",
     links: [
-      { label: "Our Programs", href: "/programs" },
-      { label: "Scholarships", href: "/scholarships" },
-      { label: "Opportunities", href: "/opportunities" },
+      { label: "Our Programmes", href: "#programmes" },
+      { label: "Scholarships", href: "#" },
+      { label: "Opportunities", href: "#" },
       { label: "Apply Now", href: "/apply" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "/about-us" },
-      { label: "How It Works", href: "/how-it-works" },
-      { label: "Careers", href: "/careers" },
+      { label: "About Us", href: "/" },
+      { label: "How It Works", href: "/" },
+      { label: "Careers", href: "/" },
       { label: "Contact Us", href: "/contact" },
     ],
   },
   {
     title: "Contact",
     links: [
-      { label: "Email Us", href: "mailto:hello@100genius.africa" },
-      { label: "WhatsApp", href: "#" },
-      { label: "Instagram", href: "#" },
-      { label: "LinkedIn", href: "#" },
+      { label: "Email Us", href: "mailto:100sgenius@gmail.com" },
+      { label: "WhatsApp", href: "https://wa.me/2349065643879" },
+      { label: "Instagram", href: "https://www.instagram.com/100genius" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/100-genius/" },
     ],
   },
 ];
@@ -100,6 +100,7 @@ export default function Footer() {
                     <li key={link.id}>
                       <a
                         href={link.url}
+                        target="_blank"
                         aria-label={link.name}
                         className="flex h-12 w-12 items-center justify-center rounded-full text-background transition-transform duration-200 hover:-translate-y-1"
                       >
@@ -123,12 +124,12 @@ export default function Footer() {
                 <ul className="flex flex-col gap-2">
                   {section.links.map((link) => (
                     <li key={link.label}>
-                      <Link
-                        to={link.href}
+                      <a
+                        href={link.href}
                         className="text-surface-muted transition-colors duration-200 hover:text-background"
                       >
                         {link.label}
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
