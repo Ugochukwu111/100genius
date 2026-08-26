@@ -343,7 +343,7 @@ const programsData = [
 
     duration: "16 Weeks",
     level: "Intermediate",
-    price: "₦450,000",
+    price: "₦500,000",
 
     hero: {
       eyebrow: "Full-Stack Development Track",
