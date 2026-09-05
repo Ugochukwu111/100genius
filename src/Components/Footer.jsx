@@ -39,17 +39,16 @@ const footerLinks = [
     title: "Programmes",
     links: [
       { label: "Our Programmes", href: "#programmes" },
-      { label: "Scholarships", href: "#" },
-      { label: "Opportunities", href: "#" },
+      { label: "Scholarships", href: "/scholarships" },
+      { label: "Opportunities", href: "/opportunities" },
       { label: "Apply Now", href: "/apply" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "/" },
-      { label: "How It Works", href: "/" },
-      { label: "Careers", href: "/" },
+      { label: "About Us", href: "/about-us" },
+      { label: "How It Works", href: "/how-it-works" },
       { label: "Contact Us", href: "/contact" },
     ],
   },
@@ -149,14 +148,14 @@ export default function Footer() {
 
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link
-              to="/privacy"
+              to="/privacy-policy"
               className="transition-colors hover:text-surface-muted"
             >
               Privacy Policy
             </Link>
 
             <Link
-              to="/terms"
+              to="/terms-of-use"
               className="transition-colors hover:text-surface-muted"
             >
               Terms Of Use

@@ -11,6 +11,12 @@ const ProgrammesPage = lazy(
   () => import("./Pages/ProgrammesPage/ProgrammesPage"),
 );
 const ApplyPage = lazy(() => import("./Pages/ApplyPage/ApplyPage"));
+const AboutPage = lazy(() => import("./Pages/AboutPage/AboutPage"));
+const HowItWorksPage = lazy(
+  () => import("./Pages/HowItWorksPage/HowItWorksPage"),
+);
+const NotFoundPage = lazy(() => import("./Pages/NotFoundPage"));
+const ComingSoon = lazy(() => import("./Components/ComingSoon"));
 
 function App() {
   return (
@@ -19,13 +25,20 @@ function App() {
       <NavBar></NavBar>
       <WhatsAppIcon />
       <Suspense fallback={<PageLoader />}>
-      <PageTransition>
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="/programme/:slug" element={<ProgrammesPage />} />
-          <Route path="/apply" element={<ApplyPage />} />
-        </Routes>
-      </PageTransition>
+        <PageTransition>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="/programme/:slug" element={<ProgrammesPage />} />
+            <Route path="/apply" element={<ApplyPage />} />
+            <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/opportunities" element={<ComingSoon />} />
+            <Route path="/scholarships" element={<ComingSoon />} />
+            <Route path="/privacy-policy" element={<ComingSoon />} />
+            <Route path="/terms-of-use" element={<ComingSoon />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </PageTransition>
       </Suspense>
     </>
   );

@@ -61,7 +61,8 @@ export default function CareerCTASection({ slug }) {
 
             <PopIn delay={0.4}>
               <Link
-                to="/mentors"
+                to="https://wa.me/2349167636839?text=Hello%20100%20Genius%2C%20I%27d%20like%20to%20learn%20more."
+                target="_blank"
                 className="
                   flex
                   min-h-10

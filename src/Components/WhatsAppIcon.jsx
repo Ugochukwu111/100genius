@@ -35,7 +35,7 @@ export default function WhatsAppIcon() {
   return (
     <a
       className={`whatsapp-icon ${visible ? "show" : "hide"}`}
-      href="https://api.whatsapp.com/send/?phone="
+      href="https://api.whatsapp.com/send/?phone=2349167636839&text=Hello%20100%20Genius%2C%20I%27d%20like%20to%20learn%20more."
       target="_blank"
       rel="noopener noreferrer"
       title="WhatsApp"
