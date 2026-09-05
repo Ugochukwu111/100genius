@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa6";
 import { motion } from "motion/react";
 
-import FadeUp from "@/Components/Animations/FadeUp";
+import FadeUp from "@/Components/animations/FadeUp";
 import PopIn from "@/Components/animations/PopIn";
 
 const links = [

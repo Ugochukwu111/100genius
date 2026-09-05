@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 import  programsData from '../../programmeData'
-import FadeUp from "@/Components/Animations/FadeUp";
+import FadeUp from "@/Components/animations/FadeUp";
 import PopIn from "@/Components/animations/PopIn";
 
 export default function ProgrammesSubNavCard() {
