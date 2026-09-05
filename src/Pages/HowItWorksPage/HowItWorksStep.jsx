@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import FadeUp from "@/Components/Animations/FadeUp";
+import FadeUp from "@/Components/animations/FadeUp";
 import PopIn from "@/Components/animations/PopIn";
 
 export default function HowItWorksStep({
