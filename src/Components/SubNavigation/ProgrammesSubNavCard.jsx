@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 import  programsData from '../../programmeData'
 import FadeUp from "@/Components/Animations/FadeUp";
-import PopIn from "@/Components/Animations/PopIn";
+import PopIn from "@/Components/animations/PopIn";
 
 export default function ProgrammesSubNavCard() {
   return (
