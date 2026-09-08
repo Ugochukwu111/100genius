@@ -11,9 +11,9 @@ const features = [
   },
   {
     id: "cohort",
-    title: "20 students maximum per cohort",
+    title: "50 students maximum per cohort",
     description:
-      "We cap every cohort at 20 so you get enough attention from your mentors. You'll never get lost in a crowd or feel like you're learning alone.",
+      "We cap every cohort at 50 so you get enough attention from your mentors. You'll never get lost in a crowd or feel like you're learning alone.",
     visual: "cohort",
   },
   {
