@@ -3,26 +3,28 @@ import { ArrowUpRight } from "lucide-react";
 import FadeUp from "@/Components/animations/FadeUp";
 import PopIn from "@/Components/animations/PopIn";
 
+// 
+import wilson from "@/assets/founders/wilson.webp";
+import bless from "@/assets/founders/blessing.webp";
+import sandra from "@/assets/founders/sandra.webp";
+
 const founders = [
   {
-    name: "Founder Name",
+    name: "Wilson Osara",
     role: "Co-Founder & CEO",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
+    image: wilson,
     text: "Building 100 Genius to help ambitious people learn, build and create meaningful opportunities.",
   },
   {
-    name: "Founder Name",
+    name: "Blessing Nwokolo",
     role: "Co-Founder",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
+    image: bless,
     text: "Creating experiences and programmes that turn curiosity into practical skills.",
   },
   {
-    name: "Founder Name",
+    name: "Sandra Andrew-Urom",
     role: "Co-Founder",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
+    image: sandra,
     text: "Helping shape a community where people can connect, grow and build together.",
   },
 ];
