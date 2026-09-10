@@ -1,5 +1,12 @@
 import FadeUp from "@/Components/animations/FadeUp";
 import PopIn from "@/Components/animations/PopIn";
+import student1 from "@/assets/students/student1.webp";
+import student2 from "@/assets/students/student2.webp";
+import student3 from "@/assets/students/student3.webp";
+import student4 from "@/assets/students/student4.webp";
+import student5 from "@/assets/students/student5.webp";
+import student6 from "@/assets/students/student6.webp";
+import student7 from "@/assets/students/student7.webp";
 
 const features = [
   {
@@ -94,6 +101,27 @@ function CodeVisual() {
 }
 
 function CohortVisual() {
+  const students = [
+    student1,
+    student2,
+    student3,
+    student4,
+    student5,
+    student6,
+    student7,
+    "https://images.unsplash.com/photo-1759852692971-a2abc6799cbd?auto=format&fit=crop&w=150&h=150&q=70",
+    "https://images.unsplash.com/photo-1594750852491-e09aa1d75c78?auto=format&fit=crop&w=150&h=150&q=70",
+    "https://images.unsplash.com/photo-1694175271713-a6e2cc378980?auto=format&fit=crop&w=150&h=150&q=70",
+    "https://images.unsplash.com/photo-1546525848-3ce03ca516f6?auto=format&fit=crop&w=150&h=150&q=70",
+    "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=150&h=150&q=70",
+    "https://images.unsplash.com/photo-1612214495858-4f32b96155a7?auto=format&fit=crop&w=150&h=150&q=70",
+  ];
+
+  // Scatter the students randomly across 20 positions
+  const cohort = Array.from({ length: 20 }, (_, index) =>
+    index < students.length ? students[index] : null
+  ).sort(() => Math.random() - 0.5);
+
   return (
     <div className="w-full rounded-xl border border-white/5 bg-[#061c0d]/90 p-5 shadow-2xl sm:p-6">
       <div className="flex items-center justify-between text-[7px] text-white/40 sm:text-[8px]">
@@ -102,22 +130,29 @@ function CohortVisual() {
       </div>
 
       <div className="my-5 grid grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
-        {Array.from({ length: 20 }).map((_, index) => (
-          <span
+        {cohort.map((student, index) => (
+          <figure
             key={index}
-            className={`aspect-square rounded-full ${
-              index === 19
-                ? "bg-green-400"
-                : index % 3 === 0
-                  ? "bg-green-900"
-                  : "bg-green-800"
-            }`}
-          />
+            className="relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-green-900"
+          >
+            {student ? (
+              <img
+                src={student}
+                alt=""
+                loading="lazy"
+                className="absolute inset-0 size-full object-cover"
+              />
+            ) : (
+              <span className="text-xs font-medium text-green-300/50 sm:text-sm">
+                ?
+              </span>
+            )}
+          </figure>
         ))}
       </div>
 
       <div className="flex items-center justify-between text-[7px] text-white/35 sm:text-[8px]">
-        <span>20 / 20 seats</span>
+        <span>20+ seats</span>
         <span className="h-0.5 w-10 bg-green-400" />
       </div>
     </div>
