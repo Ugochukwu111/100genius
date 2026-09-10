@@ -203,7 +203,7 @@ function PaymentVisual() {
       </span>
 
       <strong className="mt-1 block text-2xl text-white/95 sm:text-3xl">
-        ₦150,000
+        ₦300,000
       </strong>
 
       <span className="text-[7px] text-white/35 sm:text-[8px]">
@@ -217,7 +217,7 @@ function PaymentVisual() {
             className="flex items-center justify-between rounded-md bg-white/[0.04] px-3 py-2.5 text-[7px] text-white/45 sm:text-[8px]"
           >
             <span>{month}</span>
-            <strong className="text-green-400">₦50,000</strong>
+            <strong className="text-green-400">₦100,000</strong>
           </div>
         ))}
       </div>
