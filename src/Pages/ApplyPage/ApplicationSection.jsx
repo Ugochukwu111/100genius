@@ -1,5 +1,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import submitApplication from "@/service/submitApplication";
+import { Loader } from "lucide-react";
+import CommunityJoinModal from "@/Components/CommunityModal";
 
 const tracks = [
   {
@@ -71,11 +74,7 @@ function FadeUp({ children, className = "", delay = 0 }) {
         duration-700
         ease-out
         motion-reduce:transition-none
-        ${
-          visible
-            ? "translate-y-0 opacity-100"
-            : "translate-y-8 opacity-0"
-        }
+        ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
         ${className}
       `}
     >
@@ -128,11 +127,7 @@ function PopIn({ children, className = "", delay = 0 }) {
         duration-500
         ease-[cubic-bezier(0.22,1,0.36,1)]
         motion-reduce:transition-none
-        ${
-          visible
-            ? "scale-100 opacity-100"
-            : "scale-[0.96] opacity-0"
-        }
+        ${visible ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"}
         ${className}
       `}
     >
@@ -151,6 +146,10 @@ export default function ApplicationSection() {
     ...initialForm,
     track: selectedTrack,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCommunityModal, setShowCommunityModal] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null); 
+  const [modalVariant, setModalVariant] = useState("application");
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -194,9 +193,7 @@ export default function ApplicationSection() {
 
     if (!form.email.trim()) {
       newErrors.email = "Email address is required.";
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
-    ) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       newErrors.email = "Enter a valid email address.";
     }
 
@@ -228,7 +225,7 @@ export default function ApplicationSection() {
     return newErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setSubmitted(false);
@@ -256,7 +253,23 @@ export default function ApplicationSection() {
     setSubmitted(true);
 
     // Send applicationData to your backend here.
+    await handleSubmitApplication(applicationData);
   };
+
+  async function handleSubmitApplication(applicationData) {
+    setIsSubmitting(true);
+    try {
+      const res = await submitApplication(applicationData);
+      setSubmittedData(applicationData)
+      setShowCommunityModal(true);
+      setModalVariant('application')
+    } catch (err) {
+      setModalVariant("error");
+      console.error("error sending mail:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
     <section
@@ -269,19 +282,22 @@ export default function ApplicationSection() {
         section-safe-top
       "
     >
+      {showCommunityModal && (
+        <CommunityJoinModal
+          open={showCommunityModal}
+          onClose={() => setShowCommunityModal(false)}
+          variant={modalVariant}
+          data={submittedData}
+        />
+      )}
       <div className="container ">
-
         {/* =====================================================
             HEADER
         ====================================================== */}
 
         <div className="mb-[clamp(2.5rem,5vw,4.5rem)] max-w-3xl">
-
           <FadeUp>
-            <h1
-              id={`${formId}-title`}
-              className="max-w-3xl text-foreground"
-            >
+            <h1 id={`${formId}-title`} className="max-w-3xl text-foreground">
               Take the first step toward your tech career.
             </h1>
           </FadeUp>
@@ -294,12 +310,10 @@ export default function ApplicationSection() {
                 text-muted
               "
             >
-              Tell us a little about yourself and choose the programme you
-              would like to join. Our team will get in touch with the next
-              steps.
+              Tell us a little about yourself and choose the programme you would
+              like to join. Our team will get in touch with the next steps.
             </p>
           </FadeUp>
-
         </div>
 
         {/* =====================================================
@@ -320,7 +334,6 @@ export default function ApplicationSection() {
             lg:grid-cols-[0.9fr_1.1fr]
           "
         >
-
           {/* ===================================================
               LEFT — FIGURE / VISUAL
           ==================================================== */}
@@ -336,7 +349,6 @@ export default function ApplicationSection() {
               lg:min-h-full
             "
           >
-
             {/* Grid */}
 
             <div
@@ -419,9 +431,7 @@ export default function ApplicationSection() {
                 justify-between
               "
             >
-
               <div>
-
                 <FadeUp>
                   <h2 className="mt-6 max-w-lg text-white">
                     Apply to
@@ -442,12 +452,10 @@ export default function ApplicationSection() {
                       text-white/55
                     "
                   >
-                    Choose a track that matches where you want to go and
-                    build practical skills with guidance from experienced
-                    mentors.
+                    Choose a track that matches where you want to go and build
+                    practical skills with guidance from experienced mentors.
                   </p>
                 </FadeUp>
-
               </div>
 
               {/* Decorative number */}
@@ -465,7 +473,6 @@ export default function ApplicationSection() {
               >
                 100
               </div>
-
             </div>
           </div>
 
@@ -486,13 +493,11 @@ export default function ApplicationSection() {
               noValidate
               className="w-full max-w-2xl"
             >
-
               {/* =================================================
                   FORM HEADING
               ================================================= */}
 
               <div className="mb-8">
-
                 <FadeUp>
                   <p
                     className="
@@ -518,7 +523,6 @@ export default function ApplicationSection() {
                     It only takes a few minutes to complete.
                   </p>
                 </FadeUp>
-
               </div>
 
               {/* =================================================
@@ -551,11 +555,9 @@ export default function ApplicationSection() {
               ================================================= */}
 
               <div className="grid gap-5 sm:grid-cols-2">
-
                 {/* First name */}
 
                 <div>
-
                   <FadeUp delay={220}>
                     <label
                       htmlFor={`${formId}-first-name`}
@@ -615,13 +617,11 @@ export default function ApplicationSection() {
                       {errors.firstName}
                     </p>
                   )}
-
                 </div>
 
                 {/* Last name */}
 
                 <div>
-
                   <FadeUp delay={260}>
                     <label
                       htmlFor={`${formId}-last-name`}
@@ -681,13 +681,11 @@ export default function ApplicationSection() {
                       {errors.lastName}
                     </p>
                   )}
-
                 </div>
 
                 {/* Email */}
 
                 <div className="sm:col-span-2">
-
                   <FadeUp delay={300}>
                     <label
                       htmlFor={`${formId}-email`}
@@ -715,9 +713,7 @@ export default function ApplicationSection() {
                       required
                       aria-invalid={Boolean(errors.email)}
                       aria-describedby={
-                        errors.email
-                          ? `${formId}-email-error`
-                          : undefined
+                        errors.email ? `${formId}-email-error` : undefined
                       }
                       className="
                         h-12
@@ -747,13 +743,11 @@ export default function ApplicationSection() {
                       {errors.email}
                     </p>
                   )}
-
                 </div>
 
                 {/* Phone */}
 
                 <div className="sm:col-span-2">
-
                   <FadeUp delay={340}>
                     <label
                       htmlFor={`${formId}-phone`}
@@ -782,9 +776,7 @@ export default function ApplicationSection() {
                       required
                       aria-invalid={Boolean(errors.phone)}
                       aria-describedby={
-                        errors.phone
-                          ? `${formId}-phone-error`
-                          : undefined
+                        errors.phone ? `${formId}-phone-error` : undefined
                       }
                       className="
                         h-12
@@ -814,13 +806,11 @@ export default function ApplicationSection() {
                       {errors.phone}
                     </p>
                   )}
-
                 </div>
 
                 {/* Programme */}
 
                 <div className="sm:col-span-2">
-
                   <FadeUp delay={380}>
                     <label
                       htmlFor={`${formId}-track`}
@@ -838,7 +828,6 @@ export default function ApplicationSection() {
 
                   <PopIn delay={440}>
                     <div className="relative">
-
                       <select
                         id={`${formId}-track`}
                         name="track"
@@ -847,9 +836,7 @@ export default function ApplicationSection() {
                         required
                         aria-invalid={Boolean(errors.track)}
                         aria-describedby={
-                          errors.track
-                            ? `${formId}-track-error`
-                            : undefined
+                          errors.track ? `${formId}-track-error` : undefined
                         }
                         className="
                           h-12
@@ -875,10 +862,7 @@ export default function ApplicationSection() {
                         </option>
 
                         {tracks.map((track) => (
-                          <option
-                            key={track.value}
-                            value={track.value}
-                          >
+                          <option key={track.value} value={track.value}>
                             {track.label}
                           </option>
                         ))}
@@ -906,7 +890,6 @@ export default function ApplicationSection() {
                           strokeLinejoin="round"
                         />
                       </svg>
-
                     </div>
                   </PopIn>
 
@@ -918,9 +901,7 @@ export default function ApplicationSection() {
                       {errors.track}
                     </p>
                   )}
-
                 </div>
-
               </div>
 
               {/* =================================================
@@ -953,18 +934,15 @@ export default function ApplicationSection() {
                   />
 
                   <span className="text-xs leading-5 text-muted">
-                    I agree to the processing of my information for the
-                    purpose of this application and accept the academy's
-                    privacy policy.
+                    I agree to the processing of my information for the purpose
+                    of this application and accept the academy's privacy policy.
                   </span>
                 </label>
               </FadeUp>
 
               {errors.privacy && (
                 <FadeUp delay={520}>
-                  <p className="mt-1.5 text-xs text-danger">
-                    {errors.privacy}
-                  </p>
+                  <p className="mt-1.5 text-xs text-danger">{errors.privacy}</p>
                 </FadeUp>
               )}
 
@@ -975,23 +953,32 @@ export default function ApplicationSection() {
               <FadeUp delay={560}>
                 <button
                   type="submit"
-                  className="
-                    cta-1
-                    mt-7
-                    min-h-12
-                    w-full
-                    justify-center
-                    rounded-md
-                    px-6
-                    py-3
-                    text-sm
-                  "
+                  disabled={isSubmitting}
+                  className={`
+                        cta-1
+                        mt-7
+                        min-h-12
+                        w-full
+                        justify-center
+                        rounded-md
+                        px-6
+                        py-3
+                        text-sm
+                        disabled:opacity-50
+                        disabled:cursor-not-allowed
+                      `}
                 >
-                  Submit Application
-
-                  <span aria-hidden="true">
-                    →
-                  </span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader size={15} className="animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      Submit Application
+                      <span aria-hidden="true">→</span>
+                    </>
+                  )}
                 </button>
               </FadeUp>
 
@@ -1009,11 +996,10 @@ export default function ApplicationSection() {
                     text-muted
                   "
                 >
-                  We’ll review your application and contact you with the
-                  next steps.
+                  We’ll review your application and contact you with the next
+                  steps.
                 </p>
               </FadeUp>
-
             </form>
           </div>
         </div>
