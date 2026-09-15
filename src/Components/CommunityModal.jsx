@@ -23,7 +23,62 @@ const benefits = [
   },
 ];
 
-export default function CommunityJoinModal({ open, onClose }) {
+// Human-readable labels for programme slugs — extend as needed
+const PROGRAMME_LABELS = {
+  "data-analysis": "Data Analysis",
+};
+
+const VARIANTS = {
+  default: {
+    heading: () => (
+      <>
+        Don&apos;t build
+        <br />
+        <span className="text-white/45">alone.</span>
+      </>
+    ),
+    subtext: () =>
+      "Join ambitious people discovering opportunities, learning valuable skills, sharing ideas and building the future together.",
+  },
+  application: {
+    heading: (data) => (
+      <>
+        {data?.firstName ? `${data.firstName}, you're` : "You're"}
+        <br />
+        <span className="text-white/45">in good company.</span>
+      </>
+    ),
+    subtext: (data) => {
+      const programmeLabel =
+        PROGRAMME_LABELS[data?.programme] ?? data?.programme;
+      return `Your ${programmeLabel ?? ""} application is in${
+        data?.firstName ? `, ${data.firstName}` : ""
+      }. While you wait, join the community — get tips from people who've been through it and hear about opportunities first.`;
+    },
+  },
+  error: {
+    heading: () => (
+      <>
+        Something
+        <br />
+        <span className="text-white/45">went wrong.</span>
+      </>
+    ),
+    subtext: (data) =>
+      `We couldn't send your application email right now${
+        data?.firstName ? `, ${data.firstName}` : ""
+      }. Please try applying again in a few minutes. In the meantime, join the community — we're happy to help if the issue continues.`,
+  },
+};
+
+export default function CommunityJoinModal({
+  open,
+  onClose,
+  variant = "default",
+  data,
+}) {
+  const copy = VARIANTS[variant] ?? VARIANTS.default;
+
   useEffect(() => {
     if (!open) return;
 
@@ -58,7 +113,6 @@ export default function CommunityJoinModal({ open, onClose }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Main dark overlay */}
             <button
               type="button"
               aria-label="Close modal"
@@ -72,7 +126,6 @@ export default function CommunityJoinModal({ open, onClose }) {
               "
             />
 
-            {/* Green atmospheric overlay */}
             <div
               className="
                 pointer-events-none
@@ -81,7 +134,6 @@ export default function CommunityJoinModal({ open, onClose }) {
               "
             />
 
-            {/* Bottom vignette */}
             <div
               className="
                 pointer-events-none
@@ -90,7 +142,6 @@ export default function CommunityJoinModal({ open, onClose }) {
               "
             />
 
-            {/* Decorative blurred glow */}
             <div
               className="
                 pointer-events-none
@@ -154,7 +205,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                   MODAL BACKGROUND DESIGN
               =============================== */}
 
-              {/* Subtle top glow */}
               <div
                 className="
                   pointer-events-none
@@ -164,7 +214,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                 "
               />
 
-              {/* Engraved 100GENIUS */}
               <div
                 className="
                   pointer-events-none
@@ -182,7 +231,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                 100GENIUS
               </div>
 
-              {/* Curved gradient line one */}
               <motion.div
                 className="
                   pointer-events-none
@@ -207,7 +255,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                 }}
               />
 
-              {/* Curved gradient line two */}
               <motion.div
                 className="
                   pointer-events-none
@@ -231,7 +278,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                 }}
               />
 
-              {/* Fine diagonal gradient line */}
               <div
                 className="
                   pointer-events-none
@@ -280,7 +326,6 @@ export default function CommunityJoinModal({ open, onClose }) {
               =============================== */}
               <div className="relative z-10 px-6 pb-7 pt-11 sm:px-10 sm:pb-10 sm:pt-14">
 
-                {/* Heading */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -298,19 +343,14 @@ export default function CommunityJoinModal({ open, onClose }) {
                       sm:text-[3.5rem]
                     "
                   >
-                    Don&apos;t build
-                    <br />
-                    <span className="text-white/45">alone.</span>
+                    {copy.heading(data)}
                   </h2>
 
                   <p className="mt-5 max-w-[470px] text-[0.98rem] leading-7 text-white/60 sm:text-[1.05rem]">
-                    Join ambitious people discovering opportunities, learning
-                    valuable skills, sharing ideas and building the future
-                    together.
+                    {copy.subtext(data)}
                   </p>
                 </motion.div>
 
-                {/* Benefits */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -344,7 +384,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                   ))}
                 </motion.div>
 
-                {/* Divider */}
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -352,7 +391,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                   className="my-7 h-px origin-left bg-white/[0.08]"
                 />
 
-                {/* CTA */}
                 <motion.a
                   href={WHATSAPP_LINK}
                   target="_blank"
@@ -410,7 +448,6 @@ export default function CommunityJoinModal({ open, onClose }) {
                   />
                 </motion.a>
 
-                {/* Maybe later */}
                 <motion.button
                   type="button"
                   onClick={onClose}
